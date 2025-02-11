@@ -7,7 +7,6 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(req: NextRequest) {
   try {
     const { title, userId } = await req.json();
-    console.log(title, userId);
     const newTask = await db.insert(tasks).values({ title, userId });
     return NextResponse.json({ success: true, task: newTask });
   } catch (error) {
